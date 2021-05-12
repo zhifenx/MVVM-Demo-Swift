@@ -26,7 +26,7 @@ class LDLoginViewModel {
         if text != oldText {
             model.enabled = text.count >= 6
             oldText = text
-            updateLiveData()
+            updateData()
         }
     }
     
@@ -41,10 +41,10 @@ class LDLoginViewModel {
             model.decs = model.loginDecs()
         }
         
-        updateLiveData()
+        updateData()
     }
     
-    func updateLiveData() {
+    func updateData() {
         loginData.value = model
     }
 }

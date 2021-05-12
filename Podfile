@@ -8,5 +8,7 @@ target 'MVVM-Demo-Swift' do
   # Pods for MVVM-Demo-Swift
   pod 'SnapKit'
   pod 'RxSwift'
+  pod 'RxRelay'
+  pod 'RxCocoa'
 
 end

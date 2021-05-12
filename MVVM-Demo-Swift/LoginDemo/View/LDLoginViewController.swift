@@ -24,6 +24,10 @@ class LDLoginViewController: UIViewController {
         bind()
     }
     
+    deinit {
+        print("LDLoginViewController deinit")
+    }
+    
     //MARK: - UI
     
     private func addSubviews() {
