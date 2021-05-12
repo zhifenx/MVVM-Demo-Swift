@@ -24,6 +24,7 @@
 		C4E7C0ED264A5C6F00924F47 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7C0EC264A5C6F00924F47 /* LoginModel.swift */; };
 		C4E7C0F6264AA0DF00924F47 /* RxSwiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7C0F5264AA0DF00924F47 /* RxSwiftViewModel.swift */; };
 		C4E7C0F8264B8E7900924F47 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7C0F7264B8E7900924F47 /* UIColorEx.swift */; };
+		C4E7C0FF264BC16600924F47 /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7C0FE264BC16600924F47 /* LoginDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		C4E7C0EC264A5C6F00924F47 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		C4E7C0F5264AA0DF00924F47 /* RxSwiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftViewModel.swift; sourceTree = "<group>"; };
 		C4E7C0F7264B8E7900924F47 /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
+		C4E7C0FE264BC16600924F47 /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +110,7 @@
 		C4E7C0EE264A757700924F47 /* HomeList */ = {
 			isa = PBXGroup;
 			children = (
-				C4E7C0FC264BABBA00924F47 /* Server */,
+				C4E7C0FC264BABBA00924F47 /* DataManager */,
 				C4E7C0FB264BABAA00924F47 /* ViewModel */,
 				C4E7C0FA264BABA400924F47 /* Model */,
 				C4E7C0F9264BAB9B00924F47 /* View */,
@@ -119,6 +121,7 @@
 		C4E7C0EF264A9DD800924F47 /* LoginDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C4E7C0FD264BC15100924F47 /* DataManager */,
 				C4E7C0F2264A9DF600924F47 /* Model */,
 				C4E7C0F1264A9DEE00924F47 /* View */,
 				C4E7C0F0264A9DE600924F47 /* ViewModel */,
@@ -177,12 +180,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		C4E7C0FC264BABBA00924F47 /* Server */ = {
+		C4E7C0FC264BABBA00924F47 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
 				C47285E52649427B008B5FE7 /* ListViewDataManager.swift */,
 			);
-			path = Server;
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		C4E7C0FD264BC15100924F47 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				C4E7C0FE264BC16600924F47 /* LoginDataManager.swift */,
+			);
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		FA75FE89F79D1D0FD256B7EB /* Frameworks */ = {
@@ -320,6 +331,7 @@
 				C4E7C0F8264B8E7900924F47 /* UIColorEx.swift in Sources */,
 				C47285E2264933B5008B5FE7 /* ListModel.swift in Sources */,
 				C47285DB26493351008B5FE7 /* LiveData.swift in Sources */,
+				C4E7C0FF264BC16600924F47 /* LoginDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

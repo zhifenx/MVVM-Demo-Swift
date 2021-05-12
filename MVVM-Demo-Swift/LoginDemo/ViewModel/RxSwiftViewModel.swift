@@ -13,6 +13,8 @@ class RxSwiftViewModel {
     var subject: BehaviorSubject<LoginModel>!
     
     private var model = LoginModel()
+    private var dataManager = LoginDataManager()
+    private var disposeBag = DisposeBag()
     
     init() {
         model.loginType = .phone
@@ -32,8 +34,26 @@ class RxSwiftViewModel {
     }
     
     func updateLoginStatus() {
-        model.isLogin = !model.isLogin
-        updateData()
+        
+        dataManager.rx_requestLogin(param: model.decs)
+            .observe(on: MainScheduler.instance)//切换到主线程
+            .subscribe { [weak self] result in
+            
+                print("rx_requestLogin - ", self?.model.buttonTitle ?? "", result)
+                
+            self?.model.isLogin = !(self?.model.isLogin ?? false)
+            self?.updateData()
+            
+        } onError: { [weak self] error in
+            print(self?.model.buttonTitle ?? "", (error as! LoginError))
+            self?.updateData()
+        } onCompleted: {
+            print("rx_requestLogin - onCompleted")
+        } onDisposed: {
+            print("rx_requestLogin - disposed")
+        }
+        .disposed(by: disposeBag)
+
     }
     
     func updateData() {

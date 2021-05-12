@@ -7,18 +7,24 @@
 
 import UIKit
 import SnapKit
+import SVProgressHUD
 
 class LDLoginViewController: UIViewController {
     
-    private var rootView: LoginView!
+    private lazy var rootView: LoginView = {
+        var view = LoginView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
     private var viewModel = LDLoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "LiveData - Login"
         
-        addSubviews()
-        bind()
+        setupSubviews()
+        dataBinding()
     }
     
     deinit {
@@ -27,9 +33,7 @@ class LDLoginViewController: UIViewController {
     
     //MARK: - UI
     
-    private func addSubviews() {
-        rootView = LoginView()
-        rootView.backgroundColor = .white
+    private func setupSubviews() {
         view.addSubview(rootView)
         rootView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
@@ -45,8 +49,9 @@ class LDLoginViewController: UIViewController {
     
     //MARK: - 数据绑定
     
-    private func bind() {
+    private func dataBinding() {
         viewModel.loginData.observe { [weak self] model in
+            SVProgressHUD.dismiss()
             self?.rootView.nicknameLabel.text = model.nickname
             self?.rootView.nextButton.setTitle(model.buttonTitle, for: .normal)
             self?.rootView.nextButton.isEnabled = model.enabled
@@ -58,6 +63,7 @@ class LDLoginViewController: UIViewController {
     //MARK: - Action
     
     @objc func nextButtonAction() {
+        SVProgressHUD.show()
         viewModel.updateLoginStatus()
     }
     

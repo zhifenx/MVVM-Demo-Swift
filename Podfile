@@ -10,5 +10,6 @@ target 'MVVM-Demo-Swift' do
   pod 'RxSwift'
   pod 'RxRelay'
   pod 'RxCocoa'
+  pod 'SVProgressHUD'
 
 end

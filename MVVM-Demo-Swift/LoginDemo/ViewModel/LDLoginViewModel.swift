@@ -13,6 +13,7 @@ class LDLoginViewModel {
     private var model = LoginModel()
     private var passwordTextValid = false
     private var phoneNumberTextValid = false
+    private var dataManager = LoginDataManager()
     
     init() {
         model.loginType = .phone
@@ -41,8 +42,14 @@ class LDLoginViewModel {
     }
     
     func updateLoginStatus() {
-        model.isLogin = !model.isLogin
-        updateData()
+        
+        dataManager.requestLogin(param: model.decs) { [weak self] result in
+            
+            print("LiveData login：", result)
+            
+            self?.model.isLogin = !(self?.model.isLogin ?? false)
+            self?.updateData()
+        }
     }
     
     func updateData() {

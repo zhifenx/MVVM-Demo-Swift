@@ -8,10 +8,16 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SVProgressHUD
 
 class RxSwiftLoginViewController: UIViewController {
     
-    private var rootView: LoginView!
+    private lazy var rootView: LoginView = {
+        var view = LoginView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
     private var viewModel = RxSwiftViewModel()
     private var disposeBag = DisposeBag()
     
@@ -20,8 +26,8 @@ class RxSwiftLoginViewController: UIViewController {
         
         title = "RxSwift - Login"
         
-        addSubviews()
-        bind()
+        setupSubviews()
+        dataBinding()
     }
     
     deinit {
@@ -30,15 +36,15 @@ class RxSwiftLoginViewController: UIViewController {
     
     //MARK: - UI
     
-    private func addSubviews() {
-        rootView = LoginView()
-        rootView.backgroundColor = .white
+    private func setupSubviews() {
         view.addSubview(rootView)
         rootView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
         }
         
+        //RxCocoa 提供的tap control event 代替Target-Action
         rootView.nextButton.rx.tap.subscribe { [weak self] event in
+            SVProgressHUD.show()
             self?.viewModel.updateLoginStatus()
         }
         .disposed(by: disposeBag)
@@ -73,12 +79,12 @@ class RxSwiftLoginViewController: UIViewController {
     
     //MARK: - 数据绑定
     
-    private func bind() {
+    private func dataBinding() {
         viewModel.subject.subscribe { [weak self] eventData in
             guard let model = eventData.element else {
                 return
             }
-            
+            SVProgressHUD.dismiss()
             self?.rootView.nicknameLabel.text = model.nickname
             self?.rootView.nextButton.setTitle(model.buttonTitle, for: .normal)
             self?.rootView.nextButton.backgroundColor = model.enabled ? .hex(model.colorHexInt) : .gray
