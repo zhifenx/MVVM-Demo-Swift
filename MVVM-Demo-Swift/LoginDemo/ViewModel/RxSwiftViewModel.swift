@@ -45,7 +45,15 @@ class RxSwiftViewModel {
             self?.updateData()
             
         } onError: { [weak self] error in
-            print(self?.model.buttonTitle ?? "", (error as! LoginError))
+            
+            guard let err = error as? LoginError else {return}
+            
+            switch err {
+            case .error(let decs):
+                print(self?.model.buttonTitle ?? "", decs)
+                self?.model.nickname = decs
+            }
+
             self?.updateData()
         } onCompleted: {
             print("rx_requestLogin - onCompleted")
