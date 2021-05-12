@@ -83,15 +83,15 @@
 		C47285BE264931B5008B5FE7 /* MVVM-Demo-Swift */ = {
 			isa = PBXGroup;
 			children = (
-				C4E7C0EF264A9DD800924F47 /* LoginDemo */,
 				C47285BF264931B5008B5FE7 /* AppDelegate.swift */,
 				C47285DA26493351008B5FE7 /* LiveData.swift */,
+				C4E7C0F7264B8E7900924F47 /* UIColorEx.swift */,
+				C4E7C0EF264A9DD800924F47 /* LoginDemo */,
 				C4E7C0EE264A757700924F47 /* HomeList */,
 				C47285C5264931B5008B5FE7 /* Main.storyboard */,
 				C47285C8264931B5008B5FE7 /* Assets.xcassets */,
 				C47285CA264931B5008B5FE7 /* LaunchScreen.storyboard */,
 				C47285CD264931B5008B5FE7 /* Info.plist */,
-				C4E7C0F7264B8E7900924F47 /* UIColorEx.swift */,
 			);
 			path = "MVVM-Demo-Swift";
 			sourceTree = "<group>";
@@ -108,10 +108,10 @@
 		C4E7C0EE264A757700924F47 /* HomeList */ = {
 			isa = PBXGroup;
 			children = (
-				C47285D426493308008B5FE7 /* ListViewController.swift */,
-				C47285D726493339008B5FE7 /* ListViewModel.swift */,
-				C47285E1264933B5008B5FE7 /* ListModel.swift */,
-				C47285E52649427B008B5FE7 /* ListViewDataManager.swift */,
+				C4E7C0FC264BABBA00924F47 /* Server */,
+				C4E7C0FB264BABAA00924F47 /* ViewModel */,
+				C4E7C0FA264BABA400924F47 /* Model */,
+				C4E7C0F9264BAB9B00924F47 /* View */,
 			);
 			path = HomeList;
 			sourceTree = "<group>";
@@ -151,6 +151,38 @@
 				C4E7C0EC264A5C6F00924F47 /* LoginModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C4E7C0F9264BAB9B00924F47 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C47285D426493308008B5FE7 /* ListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4E7C0FA264BABA400924F47 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C47285E1264933B5008B5FE7 /* ListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C4E7C0FB264BABAA00924F47 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C47285D726493339008B5FE7 /* ListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C4E7C0FC264BABBA00924F47 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				C47285E52649427B008B5FE7 /* ListViewDataManager.swift */,
+			);
+			path = Server;
 			sourceTree = "<group>";
 		};
 		FA75FE89F79D1D0FD256B7EB /* Frameworks */ = {
