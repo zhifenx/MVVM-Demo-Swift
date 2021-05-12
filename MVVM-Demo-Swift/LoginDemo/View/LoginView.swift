@@ -17,6 +17,8 @@ class LoginView: UIView {
     var passwordTextField: UITextField!
     var nextButton: UIButton!
     var loginTypeButton: UIButton!
+    var phoneNumberBottomLine = UIView()
+    var passwordBottomLine = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,18 +37,23 @@ class LoginView: UIView {
         addSubview(nicknameLabel)
         
         phoneNumberTextField = UITextField()
-        phoneNumberTextField.backgroundColor = UIColor(white: 0.7, alpha: 1)
-        phoneNumberTextField.borderStyle = .line
-        phoneNumberTextField.placeholder = "输入账号"
+        phoneNumberTextField.backgroundColor = UIColor(white: 1, alpha: 0)
         phoneNumberTextField.textColor = .white
+        phoneNumberTextField.attributedPlaceholder = NSAttributedString(string: "账号", attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 0.8, alpha: 1)])
         addSubview(phoneNumberTextField)
+        
+        phoneNumberBottomLine.backgroundColor = .white
+        addSubview(phoneNumberBottomLine)
         
         passwordTextField = UITextField()
         passwordTextField.backgroundColor = UIColor(white: 0.7, alpha: 1)
-        passwordTextField.borderStyle = .line
-        passwordTextField.placeholder = "输入大于6位的字符串"
+        passwordTextField.backgroundColor = UIColor(white: 1, alpha: 0)
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入大于6位的字符串", attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 0.8, alpha: 1)])
         passwordTextField.textColor = .white
         addSubview(passwordTextField)
+        
+        passwordBottomLine.backgroundColor = .white
+        addSubview(passwordBottomLine)
         
         nextButton = UIButton()
         nextButton.setTitle("下一步", for: .normal)
@@ -90,11 +97,25 @@ class LoginView: UIView {
             make.height.equalTo(50)
         }
         
+        phoneNumberBottomLine.snp.makeConstraints { make in
+            make.bottom.equalTo(phoneNumberTextField.snp.bottom)
+            make.left.equalTo(phoneNumberTextField.snp.left)
+            make.right.equalTo(phoneNumberTextField.snp.right)
+            make.height.equalTo(0.5)
+        }
+        
         passwordTextField.snp.makeConstraints { make in
             make.top.equalTo(phoneNumberTextField.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
             make.height.equalTo(50)
+        }
+        
+        passwordBottomLine.snp.makeConstraints { make in
+            make.bottom.equalTo(passwordTextField.snp.bottom)
+            make.left.equalTo(passwordTextField.snp.left)
+            make.right.equalTo(passwordTextField.snp.right)
+            make.height.equalTo(0.5)
         }
         
         nextButton.snp.makeConstraints { make in
