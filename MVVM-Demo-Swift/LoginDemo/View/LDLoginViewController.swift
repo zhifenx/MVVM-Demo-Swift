@@ -48,16 +48,17 @@ class LDLoginViewController: UIViewController {
     private func bind() {
         viewModel.loginData.observe { [weak self] model in
             self?.rootView.nicknameLabel.text = model.nickname
-            self?.rootView.nextButton.setTitle(model.decs, for: .normal)
+            self?.rootView.nextButton.setTitle(model.buttonTitle, for: .normal)
             self?.rootView.nextButton.isEnabled = model.enabled
             self?.rootView.nextButton.backgroundColor = model.enabled ? .hex(model.colorHexInt) : .gray
+            self?.rootView.nicknameLabel.textColor = .hex(model.colorHexInt)
         }
     }
     
     //MARK: - Action
     
     @objc func nextButtonAction() {
-        viewModel.login()
+        viewModel.updateLoginStatus()
     }
     
     @objc func loginTypeButtonAction() {

@@ -39,7 +39,7 @@ class RxSwiftLoginViewController: UIViewController {
         }
         
         rootView.nextButton.rx.tap.subscribe { [weak self] event in
-            self?.viewModel.login()
+            self?.viewModel.updateLoginStatus()
         }
         .disposed(by: disposeBag)
         
@@ -48,15 +48,23 @@ class RxSwiftLoginViewController: UIViewController {
         }
         .disposed(by: disposeBag)
         
-        let nextButtonValid = rootView.passwordTextField.rx.text.orEmpty.map {
+        let phoneNumberValid = rootView.phoneNumberTextField.rx.text.orEmpty.map {
             $0.count >= 4
         }
         
-        nextButtonValid.bind(to: rootView.nextButton.rx.isEnabled)
+        let passwordValid = rootView.passwordTextField.rx.text.orEmpty.map {
+            $0.count >= 3
+        }
+        
+        let everythingValid = Observable.combineLatest(passwordValid, phoneNumberValid) {
+            $0 && $1
+        }
+        
+        everythingValid.bind(to: rootView.nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
         //这里为了更新model.enabled
-        nextButtonValid.subscribe { [weak self] eventData in
+        everythingValid.subscribe { [weak self] eventData in
             guard let enabled = eventData.element else {return}
             self?.viewModel.textDidChange(enabled)
         }
@@ -72,8 +80,9 @@ class RxSwiftLoginViewController: UIViewController {
             }
             
             self?.rootView.nicknameLabel.text = model.nickname
-            self?.rootView.nextButton.setTitle(model.decs, for: .normal)
+            self?.rootView.nextButton.setTitle(model.buttonTitle, for: .normal)
             self?.rootView.nextButton.backgroundColor = model.enabled ? .hex(model.colorHexInt) : .gray
+            self?.rootView.nicknameLabel.textColor = .hex(model.colorHexInt)
         }
         .disposed(by: disposeBag)
     }

@@ -15,13 +15,13 @@ class RxSwiftViewModel {
     private var model = LoginModel()
     
     init() {
-        model.loginType = .none
+        model.loginType = .phone
 //        subject = PublishSubject()
         subject = BehaviorSubject(value: LoginModel())
     }
     
     func refreshLoginType() {
-        let type = LoginModel.LoginType(rawValue: Int.random(in: 0...7))!
+        let type = LoginModel.LoginType(rawValue: Int.random(in: 0...5))!
         model.loginType = type
         updateData()
     }
@@ -31,15 +31,8 @@ class RxSwiftViewModel {
         updateData()
     }
     
-    func login() {
+    func updateLoginStatus() {
         model.isLogin = !model.isLogin
-        
-        if model.isLogin {
-            model.nickname = model.decs + "成功"
-        }else {
-            model.nickname = "MVVM - \(model.decs)"
-        }
-        
         updateData()
     }
     

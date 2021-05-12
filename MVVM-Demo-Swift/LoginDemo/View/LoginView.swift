@@ -34,6 +34,7 @@ class LoginView: UIView {
         nicknameLabel.textColor = .white
         nicknameLabel.text = "nickname label"
         nicknameLabel.textAlignment = .center
+        nicknameLabel.font = UIFont.systemFont(ofSize: 21)
         addSubview(nicknameLabel)
         
         phoneNumberTextField = UITextField()

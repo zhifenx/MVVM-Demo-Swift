@@ -10,30 +10,36 @@ import Foundation
 class LoginModel {
     
     enum LoginType: Int {
-        case none = 0, weChat, weiBo, phone, qq, code, apple, oneKey
+        case weChat = 0, phone, qq, code, apple, oneKey
     }
     
-    var isLogin: Bool = false
-    var decs: String = "登录"
-    var nickname: String = ""
+    var decs = ""
+    var buttonTitle = ""
+    var nickname = ""
     var enabled: Bool = false
     var colorHexInt: UInt = 0x00
     
+    var isLogin: Bool {
+        willSet {
+            if newValue {
+                nickname = decs + "成功"
+                buttonTitle = "退出登录"
+            }else {
+                nickname = "MVVM - \(decs)"
+                buttonTitle = decs
+            }
+        }
+    }
+    
     var loginType: LoginType {
-        didSet {
-            switch oldValue  {
-            case .none:
-                decs = "登录"
-                colorHexInt = 0xFFA500
+        willSet {
+            switch newValue  {
             case .weChat:
                 decs = "微信登录"
                 colorHexInt = 0x8B4513
-            case .weiBo:
-                decs = "微博登录"
-                colorHexInt = 0xDAA520
             case .phone:
-                decs = "手机登录"
-                colorHexInt = 0x7CFC00
+                decs = "手机号登录"
+                colorHexInt = 0x7B68EE
             case .qq:
                 decs = "QQ登录"
                 colorHexInt = 0x8FBC8F
@@ -42,18 +48,20 @@ class LoginModel {
                 colorHexInt = 0x20B2AA
             case .apple:
                 decs = "苹果账号登录"
-                colorHexInt = 0x00BFFF
+                colorHexInt = 0xFFC0CB
             case .oneKey:
                 decs = "一键登录"
                 colorHexInt = 0x6495ED
             }
             
             nickname = "MVVM - \(decs)"
+            buttonTitle = decs
             isLogin = false
         }
     }
     
     init() {
-        loginType = .none
+        loginType = .phone
+        isLogin = false
     }
 }

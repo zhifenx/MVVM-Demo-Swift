@@ -15,12 +15,12 @@ class LDLoginViewModel {
     private var phoneNumberTextValid = false
     
     init() {
-        model.loginType = .none
+        model.loginType = .phone
         loginData = LiveData(model)
     }
     
     func refreshLoginType() {
-        let type = LoginModel.LoginType(rawValue: Int.random(in: 0...7))!
+        let type = LoginModel.LoginType(rawValue: Int.random(in: 0...5))!
         model.loginType = type
         updateData()
     }
@@ -40,15 +40,8 @@ class LDLoginViewModel {
         updateData()
     }
     
-    func login() {
+    func updateLoginStatus() {
         model.isLogin = !model.isLogin
-        
-        if model.isLogin {
-            model.nickname = model.decs + "成功"
-        }else {
-            model.nickname = "MVVM - \(model.decs)"
-        }
-        
         updateData()
     }
     
