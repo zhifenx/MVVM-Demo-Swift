@@ -49,7 +49,6 @@ class LDLoginViewController: UIViewController {
     private func bind() {
         viewModel.loginData.observe { [weak self] model in
             self?.rootView.nicknameLabel.text = model.nickname
-            self?.rootView.phoneNumberLabel.text = model.phoneNumber
             self?.rootView.nextButton.setTitle(model.decs, for: .normal)
             self?.rootView.nextButton.isEnabled = model.enabled
             self?.rootView.nextButton.backgroundColor = model.enabled ? self?.randomColor : .gray

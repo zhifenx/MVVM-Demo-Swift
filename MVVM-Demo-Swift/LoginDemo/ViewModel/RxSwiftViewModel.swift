@@ -32,7 +32,7 @@ class RxSwiftViewModel {
             model.nickname = model.loginDecs() + "成功"
             model.decs = "退出登录"
         }else {
-            model.nickname = "zhifenx - \(model.loginDecs())"
+            model.nickname = "MVVM - \(model.loginDecs())"
             model.decs = model.loginDecs()
         }
         

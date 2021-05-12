@@ -16,15 +16,17 @@ class LoginModel {
     var loginType: LoginType = .none
     var isLogin: Bool = false
     var decs: String = "登录"
-    var nickname: String = "zhifenx"
-    var phoneNumber: String = "phone number - 0"
+    var nickname: String = ""
     var enabled: Bool = false
+    
+    init() {
+        nickname = "MVVM - \(decs)"
+    }
     
     func setLoginType(_ type: LoginType) -> LoginModel {
         loginType = type
         decs = loginDecs()
-        nickname = "zhifenx - \(decs)"
-        phoneNumber = "number - \(loginType.rawValue)"
+        nickname = "MVVM - \(decs)"
         isLogin = false
         
         return self

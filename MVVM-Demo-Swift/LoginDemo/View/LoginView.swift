@@ -13,7 +13,6 @@ class LoginView: UIView {
     var bagImageView: UIImageView!
     var alphaBagView: UIView!
     var nicknameLabel: UILabel!
-    var phoneNumberLabel: UILabel!
     var phoneNumberTextField: UITextField!
     var passwordTextField: UITextField!
     var nextButton: UIButton!
@@ -34,12 +33,6 @@ class LoginView: UIView {
         nicknameLabel.text = "nickname label"
         nicknameLabel.textAlignment = .center
         addSubview(nicknameLabel)
-        
-        phoneNumberLabel = UILabel()
-        phoneNumberLabel.textColor = .white
-        phoneNumberLabel.text = "phone number label"
-        phoneNumberLabel.textAlignment = .center
-        addSubview(phoneNumberLabel)
         
         phoneNumberTextField = UITextField()
         phoneNumberTextField.backgroundColor = UIColor(white: 0.7, alpha: 1)
@@ -90,14 +83,8 @@ class LoginView: UIView {
             make.right.equalToSuperview().offset(-16)
         }
         
-        phoneNumberLabel.snp.makeConstraints { make in
-            make.top.equalTo(nicknameLabel.snp.bottom).offset(10)
-            make.left.equalTo(nicknameLabel.snp.left)
-            make.right.equalTo(nicknameLabel.snp.right)
-        }
-        
         phoneNumberTextField.snp.makeConstraints { make in
-            make.top.equalTo(phoneNumberLabel.snp.bottom).offset(50)
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(50)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
             make.height.equalTo(50)
