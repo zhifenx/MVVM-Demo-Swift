@@ -41,7 +41,7 @@ class LDLoginViewController: UIViewController {
         rootView.nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
         rootView.loginTypeButton.addTarget(self, action: #selector(loginTypeButtonAction), for: .touchUpInside)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChangeNotification(_:)), name: UITextField.textDidChangeNotification, object: rootView.textField)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChangeNotification(_:)), name: UITextField.textDidChangeNotification, object: rootView.passwordTextField)
     }
     
     //MARK: - 数据绑定

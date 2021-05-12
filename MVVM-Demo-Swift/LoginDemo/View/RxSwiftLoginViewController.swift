@@ -52,7 +52,7 @@ class RxSwiftLoginViewController: UIViewController {
         }
         .disposed(by: disposeBag)
         
-        let nextButtonValid = rootView.textField.rx.text.orEmpty.map {
+        let nextButtonValid = rootView.passwordTextField.rx.text.orEmpty.map {
             $0.count >= 6
         }
         

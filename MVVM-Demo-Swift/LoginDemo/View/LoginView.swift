@@ -14,7 +14,8 @@ class LoginView: UIView {
     var alphaBagView: UIView!
     var nicknameLabel: UILabel!
     var phoneNumberLabel: UILabel!
-    var textField: UITextField!
+    var phoneNumberTextField: UITextField!
+    var passwordTextField: UITextField!
     var nextButton: UIButton!
     var loginTypeButton: UIButton!
     
@@ -40,12 +41,19 @@ class LoginView: UIView {
         phoneNumberLabel.textAlignment = .center
         addSubview(phoneNumberLabel)
         
-        textField = UITextField()
-        textField.backgroundColor = UIColor(white: 0.7, alpha: 1)
-        textField.borderStyle = .line
-        textField.placeholder = "输入大于6位的字符串"
-        textField.textColor = .white
-        addSubview(textField)
+        phoneNumberTextField = UITextField()
+        phoneNumberTextField.backgroundColor = UIColor(white: 0.7, alpha: 1)
+        phoneNumberTextField.borderStyle = .line
+        phoneNumberTextField.placeholder = "输入账号"
+        phoneNumberTextField.textColor = .white
+        addSubview(phoneNumberTextField)
+        
+        passwordTextField = UITextField()
+        passwordTextField.backgroundColor = UIColor(white: 0.7, alpha: 1)
+        passwordTextField.borderStyle = .line
+        passwordTextField.placeholder = "输入大于6位的字符串"
+        passwordTextField.textColor = .white
+        addSubview(passwordTextField)
         
         nextButton = UIButton()
         nextButton.setTitle("下一步", for: .normal)
@@ -88,17 +96,24 @@ class LoginView: UIView {
             make.right.equalTo(nicknameLabel.snp.right)
         }
         
-        textField.snp.makeConstraints { make in
+        phoneNumberTextField.snp.makeConstraints { make in
             make.top.equalTo(phoneNumberLabel.snp.bottom).offset(50)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
             make.height.equalTo(50)
         }
         
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(phoneNumberTextField.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(50)
+        }
+        
         nextButton.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(50)
-            make.left.equalTo(textField.snp.left)
-            make.right.equalTo(textField.snp.right)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(50)
+            make.left.equalTo(passwordTextField.snp.left)
+            make.right.equalTo(passwordTextField.snp.right)
             make.height.equalTo(48)
         }
         
