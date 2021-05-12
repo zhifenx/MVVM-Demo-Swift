@@ -23,6 +23,7 @@
 		C4E7C0EB264A58E600924F47 /* LDLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7C0EA264A58E600924F47 /* LDLoginViewModel.swift */; };
 		C4E7C0ED264A5C6F00924F47 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7C0EC264A5C6F00924F47 /* LoginModel.swift */; };
 		C4E7C0F6264AA0DF00924F47 /* RxSwiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7C0F5264AA0DF00924F47 /* RxSwiftViewModel.swift */; };
+		C4E7C0F8264B8E7900924F47 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7C0F7264B8E7900924F47 /* UIColorEx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		C4E7C0EA264A58E600924F47 /* LDLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDLoginViewModel.swift; sourceTree = "<group>"; };
 		C4E7C0EC264A5C6F00924F47 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		C4E7C0F5264AA0DF00924F47 /* RxSwiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftViewModel.swift; sourceTree = "<group>"; };
+		C4E7C0F7264B8E7900924F47 /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				C47285C8264931B5008B5FE7 /* Assets.xcassets */,
 				C47285CA264931B5008B5FE7 /* LaunchScreen.storyboard */,
 				C47285CD264931B5008B5FE7 /* Info.plist */,
+				C4E7C0F7264B8E7900924F47 /* UIColorEx.swift */,
 			);
 			path = "MVVM-Demo-Swift";
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				C4E7C0E3264A296600924F47 /* RxSwiftLoginViewController.swift in Sources */,
 				C4E7C0ED264A5C6F00924F47 /* LoginModel.swift in Sources */,
 				C47285D526493308008B5FE7 /* ListViewController.swift in Sources */,
+				C4E7C0F8264B8E7900924F47 /* UIColorEx.swift in Sources */,
 				C47285E2264933B5008B5FE7 /* ListModel.swift in Sources */,
 				C47285DB26493351008B5FE7 /* LiveData.swift in Sources */,
 			);

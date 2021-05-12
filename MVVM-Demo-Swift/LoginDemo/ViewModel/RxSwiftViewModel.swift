@@ -9,14 +9,20 @@ import Foundation
 import RxSwift
 
 class RxSwiftViewModel {
-//    var subject: PublishSubject<LoginModel> = PublishSubject()
-    var subject: BehaviorSubject<LoginModel> = BehaviorSubject(value: LoginModel())
+//    var subject: PublishSubject<LoginModel>!
+    var subject: BehaviorSubject<LoginModel>!
     
     private var model = LoginModel()
     
+    init() {
+        model.loginType = .none
+//        subject = PublishSubject()
+        subject = BehaviorSubject(value: LoginModel())
+    }
+    
     func refreshLoginType() {
         let type = LoginModel.LoginType(rawValue: Int.random(in: 0...7))!
-        model = model.setLoginType(type)
+        model.loginType = type
         updateData()
     }
     
@@ -29,11 +35,9 @@ class RxSwiftViewModel {
         model.isLogin = !model.isLogin
         
         if model.isLogin {
-            model.nickname = model.loginDecs() + "成功"
-            model.decs = "退出登录"
+            model.nickname = model.decs + "成功"
         }else {
-            model.nickname = "MVVM - \(model.loginDecs())"
-            model.decs = model.loginDecs()
+            model.nickname = "MVVM - \(model.decs)"
         }
         
         updateData()

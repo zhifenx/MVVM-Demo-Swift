@@ -8,37 +8,45 @@
 import Foundation
 
 class LDLoginViewModel {
-    private var model = LoginModel()
-    private var oldText: String?
-    
     var loginData: LiveData<LoginModel>!
     
+    private var model = LoginModel()
+    private var passwordTextValid = false
+    private var phoneNumberTextValid = false
+    
     init() {
+        model.loginType = .none
         loginData = LiveData(model)
     }
     
     func refreshLoginType() {
         let type = LoginModel.LoginType(rawValue: Int.random(in: 0...7))!
-        loginData.value = model.setLoginType(type)
+        model.loginType = type
+        updateData()
     }
     
-    func textDidChange(text: String) {
-        if text != oldText {
-            model.enabled = text.count >= 6
-            oldText = text
-            updateData()
-        }
+    func passwrodTextDidChange(_ text: String) {
+        passwordTextValid = text.count >= 4
+        updateNextButtonEnabled()
+    }
+    
+    func phoneNumberTextDidChange(_ text: String) {
+        phoneNumberTextValid = text.count > 3
+        updateNextButtonEnabled()
+    }
+    
+    func updateNextButtonEnabled() {
+        model.enabled = passwordTextValid && phoneNumberTextValid
+        updateData()
     }
     
     func login() {
         model.isLogin = !model.isLogin
         
         if model.isLogin {
-            model.nickname = model.loginDecs() + "成功"
-            model.decs = "退出登录"
+            model.nickname = model.decs + "成功"
         }else {
-            model.nickname = "MVVM - \(model.loginDecs())"
-            model.decs = model.loginDecs()
+            model.nickname = "MVVM - \(model.decs)"
         }
         
         updateData()

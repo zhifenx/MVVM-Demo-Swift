@@ -12,9 +12,6 @@ class LDLoginViewController: UIViewController {
     
     private var rootView: LoginView!
     private var viewModel = LDLoginViewModel()
-    private var randomColor: UIColor {
-        UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 100...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +38,9 @@ class LDLoginViewController: UIViewController {
         rootView.nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
         rootView.loginTypeButton.addTarget(self, action: #selector(loginTypeButtonAction), for: .touchUpInside)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChangeNotification(_:)), name: UITextField.textDidChangeNotification, object: rootView.passwordTextField)
+        NotificationCenter.default.addObserver(self, selector: #selector(phoneNumberTextDidChangeNotification(_:)), name: UITextField.textDidChangeNotification, object: rootView.phoneNumberTextField)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(passwordTextDidChangeNotification(_:)), name: UITextField.textDidChangeNotification, object: rootView.passwordTextField)
     }
     
     //MARK: - 数据绑定
@@ -51,7 +50,7 @@ class LDLoginViewController: UIViewController {
             self?.rootView.nicknameLabel.text = model.nickname
             self?.rootView.nextButton.setTitle(model.decs, for: .normal)
             self?.rootView.nextButton.isEnabled = model.enabled
-            self?.rootView.nextButton.backgroundColor = model.enabled ? self?.randomColor : .gray
+            self?.rootView.nextButton.backgroundColor = model.enabled ? .hex(model.colorHexInt) : .gray
         }
     }
     
@@ -65,12 +64,20 @@ class LDLoginViewController: UIViewController {
         viewModel.refreshLoginType()
     }
     
-    @objc func textDidChangeNotification(_ notification: NSNotification) {
+    @objc func passwordTextDidChangeNotification(_ notification: NSNotification) {
 
         guard let textField = notification.object as? UITextField, let text = textField.text else {
             return
         }
-        viewModel.textDidChange(text: text)
+        viewModel.passwrodTextDidChange(text)
+    }
+    
+    @objc func phoneNumberTextDidChangeNotification(_ notification: NSNotification) {
+
+        guard let textField = notification.object as? UITextField, let text = textField.text else {
+            return
+        }
+        viewModel.phoneNumberTextDidChange(text)
     }
     
 }

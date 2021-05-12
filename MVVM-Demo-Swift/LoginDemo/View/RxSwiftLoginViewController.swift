@@ -15,10 +15,6 @@ class RxSwiftLoginViewController: UIViewController {
     private var viewModel = RxSwiftViewModel()
     private var disposeBag = DisposeBag()
     
-    private var randomColor: UIColor {
-        UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 100...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,7 +49,7 @@ class RxSwiftLoginViewController: UIViewController {
         .disposed(by: disposeBag)
         
         let nextButtonValid = rootView.passwordTextField.rx.text.orEmpty.map {
-            $0.count >= 6
+            $0.count >= 4
         }
         
         nextButtonValid.bind(to: rootView.nextButton.rx.isEnabled)
@@ -77,7 +73,7 @@ class RxSwiftLoginViewController: UIViewController {
             
             self?.rootView.nicknameLabel.text = model.nickname
             self?.rootView.nextButton.setTitle(model.decs, for: .normal)
-            self?.rootView.nextButton.backgroundColor = model.enabled ? self?.randomColor : .gray
+            self?.rootView.nextButton.backgroundColor = model.enabled ? .hex(model.colorHexInt) : .gray
         }
         .disposed(by: disposeBag)
     }

@@ -39,7 +39,7 @@ class LoginView: UIView {
         phoneNumberTextField = UITextField()
         phoneNumberTextField.backgroundColor = UIColor(white: 1, alpha: 0)
         phoneNumberTextField.textColor = .white
-        phoneNumberTextField.attributedPlaceholder = NSAttributedString(string: "账号", attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 0.8, alpha: 1)])
+        phoneNumberTextField.attributedPlaceholder = NSAttributedString(string: "账号至少4位字符串", attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 0.8, alpha: 1)])
         addSubview(phoneNumberTextField)
         
         phoneNumberBottomLine.backgroundColor = .white
@@ -48,7 +48,7 @@ class LoginView: UIView {
         passwordTextField = UITextField()
         passwordTextField.backgroundColor = UIColor(white: 0.7, alpha: 1)
         passwordTextField.backgroundColor = UIColor(white: 1, alpha: 0)
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入大于6位的字符串", attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 0.8, alpha: 1)])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码至少3位字符串", attributes: [NSAttributedString.Key.foregroundColor : UIColor(white: 0.8, alpha: 1)])
         passwordTextField.textColor = .white
         addSubview(passwordTextField)
         

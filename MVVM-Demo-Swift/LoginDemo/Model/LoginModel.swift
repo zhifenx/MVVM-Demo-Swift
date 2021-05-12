@@ -13,43 +13,47 @@ class LoginModel {
         case none = 0, weChat, weiBo, phone, qq, code, apple, oneKey
     }
     
-    var loginType: LoginType = .none
     var isLogin: Bool = false
     var decs: String = "登录"
     var nickname: String = ""
     var enabled: Bool = false
+    var colorHexInt: UInt = 0x00
+    
+    var loginType: LoginType {
+        didSet {
+            switch oldValue  {
+            case .none:
+                decs = "登录"
+                colorHexInt = 0xFFA500
+            case .weChat:
+                decs = "微信登录"
+                colorHexInt = 0x8B4513
+            case .weiBo:
+                decs = "微博登录"
+                colorHexInt = 0xDAA520
+            case .phone:
+                decs = "手机登录"
+                colorHexInt = 0x7CFC00
+            case .qq:
+                decs = "QQ登录"
+                colorHexInt = 0x8FBC8F
+            case .code:
+                decs = "验证码登录"
+                colorHexInt = 0x20B2AA
+            case .apple:
+                decs = "苹果账号登录"
+                colorHexInt = 0x00BFFF
+            case .oneKey:
+                decs = "一键登录"
+                colorHexInt = 0x6495ED
+            }
+            
+            nickname = "MVVM - \(decs)"
+            isLogin = false
+        }
+    }
     
     init() {
-        nickname = "MVVM - \(decs)"
-    }
-    
-    func setLoginType(_ type: LoginType) -> LoginModel {
-        loginType = type
-        decs = loginDecs()
-        nickname = "MVVM - \(decs)"
-        isLogin = false
-        
-        return self
-    }
-    
-    func loginDecs() -> String {
-        switch loginType  {
-        case .none:
-            return "登录"
-        case .weChat:
-            return "微信登录"
-        case .weiBo:
-            return "微博登录"
-        case .phone:
-            return "手机号登录"
-        case .qq:
-            return "QQ登录"
-        case .code:
-            return "验证码登录"
-        case .apple:
-            return "苹果账号登录"
-        case .oneKey:
-            return "一键登录"
-        }
+        loginType = .none
     }
 }
