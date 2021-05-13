@@ -8,12 +8,12 @@
 import Foundation
 
 class LiveData<T> {
-    typealias Listener = (T) -> Void
-    var listener: Listener?
+    typealias Observer = (T) -> Void
+    var observer: Observer?
 
     var value: T {
         didSet {
-            listener?(value)
+            observer?(value)
         }
     }
     
@@ -21,8 +21,8 @@ class LiveData<T> {
         self.value = value
     }
     
-    func observe(listener: Listener?) {
-        self.listener = listener
-        listener?(value)
+    func observe(observer: Observer?) {
+        self.observer = observer
+        observer?(value)
     }
 }
