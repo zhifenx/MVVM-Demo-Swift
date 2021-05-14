@@ -9,16 +9,20 @@ import Foundation
 import RxSwift
 
 class RxSwiftViewModel {
-//    var subject: PublishSubject<LoginModel>!
+
+    //Subject 供View层 订阅
     var subject: BehaviorSubject<LoginModel>!
     
     private var model = LoginModel()
+    
+    /// 用于网络请求
     private var dataManager = LoginDataManager()
+    
+    /// 管理rx 订阅的生命周期
     private var disposeBag = DisposeBag()
     
     init() {
         model.loginType = .phone
-//        subject = PublishSubject()
         subject = BehaviorSubject(value: LoginModel())
     }
     

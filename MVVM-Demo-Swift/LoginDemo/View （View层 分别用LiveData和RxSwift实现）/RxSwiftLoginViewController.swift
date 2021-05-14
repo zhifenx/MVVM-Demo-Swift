@@ -18,7 +18,11 @@ class RxSwiftLoginViewController: UIViewController {
         return view
     }()
     
+    
+    /// ViewModel
     private var viewModel = RxSwiftViewModel()
+    
+    /// 管理rx 订阅的生命周期
     private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -38,6 +42,8 @@ class RxSwiftLoginViewController: UIViewController {
     
     private func setupSubviews() {
         view.addSubview(rootView)
+        
+        //SnapKit布局代码
         rootView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
         }
@@ -54,18 +60,22 @@ class RxSwiftLoginViewController: UIViewController {
         }
         .disposed(by: disposeBag)
         
+        //判断phoneNumberTextField输入的字符串长度是否大于4 然后转成Observable
         let phoneNumberValid = rootView.phoneNumberTextField.rx.text.orEmpty.map {
             $0.count >= 4
         }
         
+        //判断passwordTextField输入的字符串长度是否大于3 然后转成Observable
         let passwordValid = rootView.passwordTextField.rx.text.orEmpty.map {
             $0.count >= 3
         }
         
+        //合并上面两个结果 转成Observable
         let everythingValid = Observable.combineLatest(passwordValid, phoneNumberValid) {
             $0 && $1
         }
         
+        //将两个TextFiled的结果 绑定到登录按钮上
         everythingValid.bind(to: rootView.nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
         

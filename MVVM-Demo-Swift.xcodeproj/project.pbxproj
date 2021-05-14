@@ -89,7 +89,7 @@
 				C47285DA26493351008B5FE7 /* LiveData.swift */,
 				C4E7C0F7264B8E7900924F47 /* UIColorEx.swift */,
 				C4E7C0EF264A9DD800924F47 /* LoginDemo */,
-				C4E7C0EE264A757700924F47 /* HomeList */,
+				C4E7C0EE264A757700924F47 /* HomeList （首页UITableViewController 使用MVVM+LiveData实现） */,
 				C47285C5264931B5008B5FE7 /* Main.storyboard */,
 				C47285C8264931B5008B5FE7 /* Assets.xcassets */,
 				C47285CA264931B5008B5FE7 /* LaunchScreen.storyboard */,
@@ -107,7 +107,7 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C4E7C0EE264A757700924F47 /* HomeList */ = {
+		C4E7C0EE264A757700924F47 /* HomeList （首页UITableViewController 使用MVVM+LiveData实现） */ = {
 			isa = PBXGroup;
 			children = (
 				C4E7C0FC264BABBA00924F47 /* DataManager */,
@@ -115,45 +115,45 @@
 				C4E7C0FA264BABA400924F47 /* Model */,
 				C4E7C0F9264BAB9B00924F47 /* View */,
 			);
-			path = HomeList;
+			path = "HomeList （首页UITableViewController 使用MVVM+LiveData实现）";
 			sourceTree = "<group>";
 		};
 		C4E7C0EF264A9DD800924F47 /* LoginDemo */ = {
 			isa = PBXGroup;
 			children = (
-				C4E7C0FD264BC15100924F47 /* DataManager */,
-				C4E7C0F2264A9DF600924F47 /* Model */,
-				C4E7C0F1264A9DEE00924F47 /* View */,
-				C4E7C0F0264A9DE600924F47 /* ViewModel */,
+				C4E7C0FD264BC15100924F47 /* DataManager（网络层） */,
+				C4E7C0F2264A9DF600924F47 /* Model （Model层内部有弱业务逻辑） */,
+				C4E7C0F1264A9DEE00924F47 /* View （View层 分别用LiveData和RxSwift实现） */,
+				C4E7C0F0264A9DE600924F47 /* ViewModel （ViewModel层 分别用LiveData和RxSwift实现） */,
 			);
 			path = LoginDemo;
 			sourceTree = "<group>";
 		};
-		C4E7C0F0264A9DE600924F47 /* ViewModel */ = {
+		C4E7C0F0264A9DE600924F47 /* ViewModel （ViewModel层 分别用LiveData和RxSwift实现） */ = {
 			isa = PBXGroup;
 			children = (
 				C4E7C0EA264A58E600924F47 /* LDLoginViewModel.swift */,
 				C4E7C0F5264AA0DF00924F47 /* RxSwiftViewModel.swift */,
 			);
-			path = ViewModel;
+			path = "ViewModel （ViewModel层 分别用LiveData和RxSwift实现）";
 			sourceTree = "<group>";
 		};
-		C4E7C0F1264A9DEE00924F47 /* View */ = {
+		C4E7C0F1264A9DEE00924F47 /* View （View层 分别用LiveData和RxSwift实现） */ = {
 			isa = PBXGroup;
 			children = (
 				C4E7C0E4264A300E00924F47 /* LoginView.swift */,
 				C4E7C0DF264A287D00924F47 /* LDLoginViewController.swift */,
 				C4E7C0E2264A296600924F47 /* RxSwiftLoginViewController.swift */,
 			);
-			path = View;
+			path = "View （View层 分别用LiveData和RxSwift实现）";
 			sourceTree = "<group>";
 		};
-		C4E7C0F2264A9DF600924F47 /* Model */ = {
+		C4E7C0F2264A9DF600924F47 /* Model （Model层内部有弱业务逻辑） */ = {
 			isa = PBXGroup;
 			children = (
 				C4E7C0EC264A5C6F00924F47 /* LoginModel.swift */,
 			);
-			path = Model;
+			path = "Model （Model层内部有弱业务逻辑）";
 			sourceTree = "<group>";
 		};
 		C4E7C0F9264BAB9B00924F47 /* View */ = {
@@ -188,12 +188,12 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
-		C4E7C0FD264BC15100924F47 /* DataManager */ = {
+		C4E7C0FD264BC15100924F47 /* DataManager（网络层） */ = {
 			isa = PBXGroup;
 			children = (
 				C4E7C0FE264BC16600924F47 /* LoginDataManager.swift */,
 			);
-			path = DataManager;
+			path = "DataManager（网络层）";
 			sourceTree = "<group>";
 		};
 		FA75FE89F79D1D0FD256B7EB /* Frameworks */ = {

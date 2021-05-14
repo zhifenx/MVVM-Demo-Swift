@@ -14,12 +14,17 @@ class ListViewModel {
     var liveData: LiveData<[ListModel]> = LiveData([])
 
     init() {
-        dataArr = [
+        dataArr = initData()
+        liveData.value = dataArr
+    }
+    
+    
+    /// 这里实际 开发中也可能是调用网络请求
+    func initData() -> [ListModel] {
+       return [
             ListModel(title: "LiveData - login demo", detail: "LiveData"),
             ListModel(title: "RxSwift - login demo", detail: "RxSwift"),
         ]
-        
-        liveData.value = dataArr
     }
     
     func insertData() {

@@ -66,7 +66,7 @@ class LoginView: UIView {
         loginTypeButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         loginTypeButton.setTitleColor(.white, for: .normal)
         loginTypeButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        loginTypeButton.setTitle("使用其他账号登录", for: .normal)
+        loginTypeButton.setTitle("点我-使用其他账号登录", for: .normal)
         addSubview(loginTypeButton)
     }
     
@@ -129,7 +129,7 @@ class LoginView: UIView {
         loginTypeButton.snp.makeConstraints { make in
             make.top.equalTo(nextButton.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
-            make.width.equalTo(120)
+            make.width.equalTo(140)
             make.height.equalTo(30)
         }
     }

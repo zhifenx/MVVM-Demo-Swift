@@ -12,6 +12,10 @@ enum LoginError: Error {
     case error(_ decs: String)
 }
 
+/*
+ *  简单模拟网络请求 添加2秒耗时
+ */
+
 class LoginDataManager {
     
     typealias Result = (_ msg: String) -> Void
